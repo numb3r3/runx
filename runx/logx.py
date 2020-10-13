@@ -307,7 +307,7 @@ class LogX(object):
         # Save out current model
         self.save_ckpt_fn = os.path.join(
             self.logdir, 'last_checkpoint_ep{}.pth'.format(epoch))
-        torch.save(save_dict, self.save_ckpt_fn)
+        torch.save(save_dict, self.save_ckpt_fn, _use_new_zipfile_serialization=False)
         self.save_metric = metric
 
         is_better = self.is_better(self.save_metric, self.best_metric,
